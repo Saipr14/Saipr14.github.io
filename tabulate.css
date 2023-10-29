@@ -1,3 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.input-container {
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+td, th {
+    border: 1px solid #fbca03;
+    text-align: left;
+    padding: 8px;
+    align-items: center;
+    text-align: center;
+  }
+
+  table{
+     background: linear-gradient(90deg, rgba(75, 9, 8, 1) 0%, rgba(106, 12, 11, 1) 35%, rgba(170, 5, 5, 1) 100%);
+     top: -20px;
+  }
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+ background: linear-gradient(90deg, rgba(75, 9, 8, 1) 0%, rgba(106, 12, 11, 1) 35%, rgba(170, 5, 5, 1) 100%);;
+}
+
+/* CSS counter for serial number */
+tbody tr{
+    counter-increment: rowNumber;
+    content: counter(rowNumber);
+}
+
+/* Add player button */
+.add-player {
+    font-size: 20px;
+    color: #007BFF;
+    cursor: pointer;
+}
+
+/* Logo image size */
+.team-logo {
+    max-width: 5px;
+    max-height: 5px;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -9,26 +86,27 @@ html,body{
     height: 100%;
     width: 100vw;
     max-width:100% ;
-    
+    box-sizing: border-box;
 }
 
 
 
 body{
+    display: flex;
+    flex-direction: column;
     font-family: 'Courier New', Courier, monospace, 'Oswald', sans-serif;
  background-color: rgb(244, 240, 240);
  font-size: 16px;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+    box-sizing: inherit;
     min-height: 100%;
     background-image: url('images/arc4.jpg');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: cover;
     backdrop-filter: blur(5px);
     background-position: center;
+   
 }
 
 
@@ -37,10 +115,11 @@ img{
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr auto; /* Create two rows, the first grows to fill available space, the second is for the footer */
     min-height: 100vh;
 }
+
 
 .header ul li{
     position: relative;
@@ -74,12 +153,12 @@ a ,a:visited{
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     background: rgb(75,9,8);
 background: linear-gradient(90deg, rgba(75,9,8,1) 0%, rgba(106,12,11,1) 35%, rgba(170,5,5,1) 100%);
-filter: drop-shadow(-15px 2px 18px #fbca03);
+filter: drop-shadow(-15px 2px 18px rgb(78, 77, 77));
 }
 
 .header ul li{
@@ -102,16 +181,46 @@ filter: drop-shadow(-15px 2px 18px #fbca03);
 
 }
 
+/*Same for all page*/
+.hero{
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 0;
+    top: 0;
+    font-size: 24px;
+    font-style: bold;
+    color: #fbca03;
+}
+
+.hero h1,#teamName,#addTeam{
+    position: relative;
+    color: #fbca03;
+   
+}
+
+#addTeam{
+    background: linear-gradient(90deg, rgba(75, 9, 8, 1) 0%, rgba(106, 12, 11, 1) 35%, rgba(170, 5, 5, 1) 100%);
+}
+/*Same for all page*/
+
+.hero  a{
+    color: rgba(170,5,5,1);
+}
+
+/*Same for all page*/
 .footer{
-    position: absolute;
-    bottom: 0;
+    position: sticky;
+    right: 0;
     left: 0;
     width: 100%;
     background: rgb(75, 9, 8);
     background: linear-gradient(90deg, rgba(75, 9, 8, 1) 0%, rgba(106, 12, 11, 1) 35%, rgba(170, 5, 5, 1) 100%);
     box-shadow: 12px 12px 22px grey;
-    margin-top: auto;
+    z-index: 1;
 }
+
+
 
 .footer ul {
     list-style: none;
@@ -121,7 +230,7 @@ filter: drop-shadow(-15px 2px 18px #fbca03);
     justify-content: space-around;
     align-items: center;
     padding: 0;
-    min-height: 100%;
+
 }
 
 .footer ul li {
@@ -144,60 +253,5 @@ filter: drop-shadow(-15px 2px 18px #fbca03);
     
 }
 
-.hero{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-
-
-.hero {
-    font-size: 24px;
-    font-style: bold;
-    color: rgba(170,5,5,1);
-}
-
-.hero h1{
- color: #fbca03;
-}
-
-.hero .GE:hover{
-    background-image: url('images/ground.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: background 0.5s ease;
-    color: white;
-}
-
-.hero .OG:hover{
-    background-image: url('images/online.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: background 0.5s ease;
-    color: white;
-}
-
-.hero .CF:hover{
-    background-image: url('images/fixtures.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: background 0.5s ease;
-    color: white;
-}
-
-.hero .GE,.OG,.CF{
-    padding: 32px;
-    background: rgb(251,202,3);
-    background: linear-gradient(135deg, rgba(251,202,3,1) 9%, rgba(185,125,16,1) 69%);
-    margin: 50px 12px 50px 12px;
-    border-radius: 135px;
-    filter: drop-shadow(-15px 2px 18px rgb(103, 173, 214));
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-}
-
-.hero a{
-    color: rgba(170,5,5,1);
-}
-
+/*Same for all page*/
+  
